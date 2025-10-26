@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cleana Co. — Southern Highlands Cleaning</title>
+  <style>
+    :root{--blue:#0b6ef6;--dark:#0b3a66;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; margin:0; color:#0f1724; background:#ffffff}
+    header{background:linear-gradient(90deg,var(--blue),#3aa0ff); color:white; padding:28px 16px; text-align:center}
+    .container{max-width:980px;margin:28px auto;padding:0 16px}
+    h1{margin:0;font-size:28px}
+    p.lead{margin:8px 0 0;opacity:0.95}
+    .card{border-radius:12px;box-shadow:0 6px 20px rgba(11,78,160,0.08);padding:18px;background:white;margin-bottom:16px}
+    .flex{display:flex;gap:12px}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+    .service{padding:12px;border-radius:10px;border:1px solid #eef2ff}
+    .btn{display:inline-block;background:var(--blue);color:white;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:600}
+    .btn-ghost{background:transparent;border:2px solid var(--blue);color:var(--blue)}
+    footer{padding:18px;text-align:center;color:var(--muted);font-size:14px}
+    .phone-small{font-weight:700}
+    /* Responsive spacing */
+    @media(min-width:700px){h1{font-size:36px}}
+    /* Modal fallback for desktop */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.35)}
+    .modal .box{background:white;padding:18px;border-radius:12px;max-width:420px;width:calc(100% - 40px);box-shadow:0 10px 30px rgba(2,6,23,0.2)}
+    .row{display:flex;gap:8px;align-items:center}
+    .copy{background:#f3f4f6;border-radius:8px;padding:8px 10px;flex:1; font-family:monospace}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Cleana Co.</h1>
+      <p class="lead">Professional cleaning for homes & businesses — Southern Highlands & surrounding areas</p>
+      <div style="margin-top:14px">
+        <!-- Replace PHONE_NUMBER with your number in international format, e.g. +61412345678 -->
+        <a id="bookBtn" class="btn" href="sms:PHONE_NUMBER?body=Hi%20Cleana%20Co!%20I%27d%20like%20to%20book%20a%20cleaning.%20Please%20contact%20me.%20" title="Book now via SMS">Book Now</a>
+        <a class="btn btn-ghost" href="#contact" style="margin-left:10px">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:6px">
+    <section class="card">
+      <h2 style="margin-top:0">Welcome</h2>
+      <p>Cleana Co. delivers reliable house, office, commercial and move in/out cleaning across the Southern Highlands. Friendly teams, spotless results, and easy booking.</p>
+    </section>
+
+    <section class="card">
+      <h3 style="margin-top:0">Our Services</h3>
+      <div class="services">
+        <div class="service">
+          <strong>House Cleaning</strong>
+          <p style="margin:8px 0 0;color:var(--muted)">Regular & one-off house cleans tailored to your home.</p>
+        </div>
+        <div class="service">
+          <strong>Office Cleaning</strong>
+          <p style="margin:8px 0 0;color:var(--muted)">Discrete, reliable cleaning for small and medium offices.</p>
+        </div>
+        <div class="service">
+          <strong>Commercial Cleaning</strong>
+          <p style="margin:8px 0 0;color:var(--muted)">Custom solutions for shops, salons and workplaces.</p>
+        </div>
+        <div class="service">
+          <strong>Move In / Move Out</strong>
+          <p style="margin:8px 0 0;color:var(--muted)">Thorough end-of-lease cleans to help you move with ease.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <h3 style="margin-top:0">Contact</h3>
+      <p class="row" style="align-items:center">Call or message us on <span class="phone-small" style="margin-left:8px">PHONE_NUMBER</span></p>
+      <p style="margin-top:8px;color:var(--muted)">Prefer a form? Email us at <a href="mailto:cleanaco@example.com">cleanaco@example.com</a> (replace with your email)</p>
+      <div style="margin-top:12px">
+        <a class="btn" id="bookBtn2" href="sms:PHONE_NUMBER?body=Hi%20Cleana%20Co!%20I%27d%20like%20to%20book%20a%20cleaning.%20">Book Now (SMS)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">&copy; <span id="year"></span> Cleana Co. — Southern Highlands</div>
+  </footer>
+
+  <!-- Desktop fallback: show modal with number copy button if sms: doesn't work -->
+  <div id="smsModal" class="modal" aria-hidden="true">
+    <div class="box">
+      <h4>Send us a message</h4>
+      <p style="margin-top:6px;color:var(--muted)">If your device can't open SMS directly, copy the number below and send this message:</p>
+      <div style="margin-top:10px" class="row">
+        <div id="num" class="copy">PHONE_NUMBER</div>
+        <button id="copyBtn" class="btn" style="padding:8px 10px">Copy</button>
+      </div>
+      <p style="margin-top:10px;font-family:monospace;color:var(--muted);font-size:13px">Message: Hi Cleana Co! I'd like to book a cleaning.</p>
+      <div style="text-align:right;margin-top:10px"><button id="closeModal" class="btn btn-ghost">Close</button></div>
+    </div>
+  </div>
+
+  <script>
+    // Fill year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Detect if SMS links are supported (best-effort). On many desktops, sms: will do nothing — show modal fallback.
+    function openSmsOrFallback(e){
+      var href = e.currentTarget.getAttribute('href');
+      // small delay to let mobile handle link; on desktop we show fallback
+      if(/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)){
+        // on mobile just navigate
+        return true;
+      } else {
+        e.preventDefault();
+        var modal = document.getElementById('smsModal'); modal.style.display='flex'; modal.setAttribute('aria-hidden','false');
+      }
+    }
+    document.getElementById('bookBtn').addEventListener('click', openSmsOrFallback);
+    document.getElementById('bookBtn2').addEventListener('click', openSmsOrFallback);
+
+    document.getElementById('closeModal').addEventListener('click', function(){
+      var modal = document.getElementById('smsModal'); modal.style.display='none'; modal.setAttribute('aria-hidden','true');
+    });
+    document.getElementById('copyBtn').addEventListener('click', function(){
+      var num = document.getElementById('num').textContent;
+      navigator.clipboard.writeText(num).then(function(){
+        alert('Number copied to clipboard');
+      }, function(){
+        alert('Unable to copy — please select and copy manually');
+      });
+    });
+  </script>
+</body>
+</html>
